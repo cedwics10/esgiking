@@ -1,2 +1,2 @@
 # esgking
-A Node.JS API to manager order of plates. With your phone, terminal or online
+A Node.JS API to manage orders of plates. With your phone, terminal or online.
