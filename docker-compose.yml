@@ -1,0 +1,9 @@
+services:
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 22222:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: esgi
+      MONGO_INITDB_ROOT_PASSWORD: igse
