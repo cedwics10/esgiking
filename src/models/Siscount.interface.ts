@@ -1,6 +1,6 @@
-export interface Promotion {
+export interface Discount {
   label:         string;
-  discountValue: number;
+  percentage: number;
   startDate:     Date;
   endDate:       Date;
   products:      string[];

@@ -1,4 +1,4 @@
-import { UserRole } from '../models/user.interface';
+import { UserRole } from '../models/User.interface';
 
 export enum Permission {
   MANAGE_RESTAURANTS    = 'manage_restaurants',
