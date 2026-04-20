@@ -1,4 +1,4 @@
-import { UserRoles } from '../models/user.interface';
+import { UserRole } from '../models/user.interface';
 
 export enum Permission {
   MANAGE_RESTAURANTS    = 'manage_restaurants',
@@ -16,36 +16,36 @@ export enum Permission {
   CREATE_ADMIN          = 'create_admin',
 }
 
-type RolePermissionsMap = Record<UserRoles, Permission[]>;
+type RolePermissionsMap = Record<UserRole, Permission[]>;
 
 // 3. Mapping rôle → permissions
 export const ROLE_PERMISSIONS: RolePermissionsMap = {
-  [UserRoles.BIGBOSS]: [
+  [UserRole.BIGBOSS]: [
     Permission.MANAGE_RESTAURANTS,
     Permission.VIEW_ALL_RESTAURANTS,
     Permission.CREATE_ADMIN,
     Permission.VIEW_ORDERS,
   ],
-  [UserRoles.ADMIN]: [
+  [UserRole.ADMIN]: [
     Permission.MANAGE_PRODUCTS,
     Permission.VIEW_CATALOGUE,
     Permission.VIEW_ORDERS,
     Permission.MANAGE_ORDERS,
   ],
-  [UserRoles.CUSTOMER]: [
+  [UserRole.CUSTOMER]: [
     Permission.VIEW_CATALOGUE,
     Permission.PLACE_ORDER,
   ],
-  [UserRoles.PREPARATEUR]: [
+  [UserRole.PREPARATEUR]: [
     Permission.VIEW_ORDERS,
     Permission.PREPARE_ORDERS,
   ],
-  [UserRoles.LIVREUR]: [
+  [UserRole.LIVREUR]: [
     Permission.VIEW_ORDERS,
     Permission.DELIVER_ORDERS,
   ],
 };
 
 
-export const hasPermission = (role: UserRoles, permission: Permission): boolean =>
+export const hasPermission = (role: UserRole, permission: Permission): boolean =>
   ROLE_PERMISSIONS[role]?.includes(permission) ?? false;
