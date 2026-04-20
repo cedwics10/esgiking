@@ -1,7 +1,9 @@
 export enum UserRole {
-    root,
-    creator,
-    customer
+  BIGBOSS     = 'bigboss',
+  ADMIN       = 'admin',
+  CUSTOMER    = 'customer',
+  PREPARATEUR = 'preparateur',
+  LIVREUR     = 'livreur',
 }
 
 export interface User {
