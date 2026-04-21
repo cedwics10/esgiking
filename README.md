@@ -21,3 +21,4 @@ npm install dotenv
 1. Start Docker Desktop
 2. docker compose -f docker-compose.yml pull
 3. docker compose -f docker-compose.yml up -d
+4. npm run seed

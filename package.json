@@ -6,8 +6,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+
   "scripts": {
     "start": "node dist/index.js",
+    "dataset": "node dist/dataset.js",
     "build": "tsc"
   },
   "devDependencies": {
