@@ -11,8 +11,10 @@ node index.js
 
 1. Have Node.JS on your computer
 2. npm install 
-3. npm run build
-4. 
+3. npm install mongoose
+npm install -D @types/mongoose @types/express
+npm install dotenv
+4. npm run build
 
 ## Mongo DB
 

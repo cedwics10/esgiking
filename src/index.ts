@@ -1,8 +1,14 @@
 import express from 'express';
 import {config} from "dotenv";
+
 config();
 
-const app = express()
+async function main() {
+    const connection = await Database();
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Server started on port ${port}`));
+    const app = express();
+
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => console.log(`Listening on port ${port}`));
+}
+main().catch(console.error);
