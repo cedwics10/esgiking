@@ -2,18 +2,18 @@ import { Model, Mongoose } from "mongoose";
 import { Restaurant } from "../models";
 import { getRestaurantSchema } from "./schema"
 
-export type CreateRestaurant = Omit<Restaurant, "_id">;
+export type newRestaurant = Omit<Restaurant, "_id">;
 
 export class RestaurantService {
 
-  readonly restaurantModel: Model<Restaurant>;
+  readonly model: Model<Restaurant>;
 
   constructor(connection: Mongoose) {
-    this.restaurantModel = connection.model("Restaurant", getRestaurantSchema());
+    this.model = connection.models['Restaurant'] || connection.model('Restaurant', getRestaurantSchema());
   }
 
-  async create(data: CreateRestaurant): Promise<Restaurant> {
-    throw new Error("Not implemented");
+  async create(data: newRestaurant): Promise<Restaurant> {
+    return this.model.create(data);
   }
 
   async findAll(): Promise<Restaurant[]> {

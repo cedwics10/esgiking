@@ -23,3 +23,8 @@ export async function openConnection(): Promise<void> {
         dbName: database
     });
 }
+
+export function getConnection(): Mongoose {
+  if (!mongoConnection) throw new Error("MongoDB non connecté");
+  return mongoConnection;
+}
