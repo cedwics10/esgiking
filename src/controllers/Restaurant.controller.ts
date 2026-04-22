@@ -36,6 +36,7 @@ export class RestaurantController {
 
   buildRouter(): Router {
     const router = Router();
+    router.post('/', json(), this.create.bind(this));
     return router;
   }
 }
