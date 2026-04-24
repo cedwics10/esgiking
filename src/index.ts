@@ -19,7 +19,7 @@ async function main() {
     const serviceResto = new RestaurantService(mongoConnection);
     const controllerResto = new RestaurantController(serviceResto);
 
-    app.use("/lesson", controllerResto.buildRouter());
+    app.use("/resto", controllerResto.buildRouter());
 
     const port = process.env.PORT || 3000;
     app.listen(port, () => console.log(`2. Application lancée sur le port ${port}`));

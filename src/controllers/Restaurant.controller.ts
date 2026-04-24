@@ -14,6 +14,10 @@ export class RestaurantController {
 
     const restaurant = data as newRestaurant;
 
+    if (this.restaurantService.invalid(restaurant)) {
+      res.status(400).end();
+    }
+
     await this.restaurantService.create(restaurant);
     res.status(201).end();
   }

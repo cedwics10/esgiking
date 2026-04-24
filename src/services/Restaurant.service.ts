@@ -12,6 +12,11 @@ export class RestaurantService {
     this.model = connection.models['Restaurant'] || connection.model('Restaurant', getRestaurantSchema());
   }
 
+  invalid(entity :newRestaurant) : boolean
+  {
+    return false;
+  }
+
   async create(data: newRestaurant): Promise<Restaurant> {
     return this.model.create(data);
   }
