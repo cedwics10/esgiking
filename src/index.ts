@@ -3,8 +3,8 @@ import {config} from "dotenv";
 
 import { openConnection, getConnection } from './utils/mongoose.utils';
 
-import { RestaurantService } from './services/Restaurant.service';
-import { RestaurantController } from './controllers/Restaurant.controller';
+import { RestaurantService, MenuService } from './services/';
+import { RestaurantController, MenuController } from './controllers/';
 
 config();
 
@@ -19,7 +19,11 @@ async function main() {
     const serviceResto = new RestaurantService(mongoConnection);
     const controllerResto = new RestaurantController(serviceResto);
 
+    const serviceMenu = new MenuService(mongoConnection);
+    const controllerRMenu = new MenuController(serviceMenu);
+
     app.use("/resto", controllerResto.buildRouter());
+    app.use("/menu", controllerRMenu.buildRouter());
 
     const port = process.env.PORT || 3000;
     app.listen(port, () => console.log(`2. Application lancée sur le port ${port}`));

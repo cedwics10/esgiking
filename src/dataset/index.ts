@@ -5,6 +5,7 @@ import { getConnection, openConnection } from "../utils/mongoose.utils";
 import { UserService } from "../services/User.service";
 import { createUsers } from "./Users.dataset";
 import { createRestaurants } from "./Restaurants.dataset";
+import { createMenu } from "./Menu.dataset";
 
 async function createDataset() {
   await openConnection();
@@ -19,6 +20,7 @@ async function createDataset() {
 
   await createRestaurants(connection);
   await createUsers(connection);
+  await createMenu(connection);
 
   console.log("Dataset généré. ");
   process.exit(0);
