@@ -3,7 +3,7 @@
 A Node.JS API to manage orders of plates. With your phone, terminal or online.
 
 # How to run it ?
-
+0. Start Docker Desktop
 1. docker compose up -d
 2. npm run start
 
@@ -21,12 +21,8 @@ docker compose down -v
 ## Node.JS
 
 1. Have Node.JS on your computer
-2. npm install 
-3. npm install mongoose
-npm install -D @types/mongoose @types/express
-npm install dotenv
-npm install -D ts-node
-4. npm run build
+2. npm install
+3. npm run build
 
 ## Mongo DB
 

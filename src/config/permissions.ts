@@ -18,7 +18,6 @@ export enum Permission {
 
 type RolePermissionsMap = Record<UserRole, Permission[]>;
 
-// 3. Mapping rôle → permissions
 export const ROLE_PERMISSIONS: RolePermissionsMap = {
   [UserRole.BIGBOSS]: [
     Permission.MANAGE_RESTAURANTS,
@@ -45,7 +44,6 @@ export const ROLE_PERMISSIONS: RolePermissionsMap = {
     Permission.DELIVER_ORDERS,
   ],
 };
-
 
 export const hasPermission = (role: UserRole, permission: Permission): boolean =>
   ROLE_PERMISSIONS[role]?.includes(permission) ?? false;

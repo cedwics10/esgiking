@@ -19,6 +19,7 @@ export async function openConnection(): Promise<void> {
             username: user,
             password: pass,
         },
+        
         authSource: "admin",
         dbName: database
     });
