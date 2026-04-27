@@ -3,8 +3,9 @@ import {config} from "dotenv";
 
 import { openConnection, getConnection } from './utils/mongoose.utils';
 
-import { RestaurantService, MenuService } from './services/';
-import { RestaurantController, MenuController } from './controllers/';
+import { RestaurantService, MenuService, ProductService } from './services/';
+import { RestaurantController, MenuController, ProductController } from './controllers/';
+import { mongo } from 'mongoose';
 
 config();
 
@@ -16,14 +17,22 @@ async function main() {
 
     const app = express();
 
+    /* Service */
+    const serviceMenu = new MenuService(mongoConnection);
+    const serviceProduct = new ProductService(mongoConnection);
+
     const serviceResto = new RestaurantService(mongoConnection);
+
+    /* Controllers */
+    const controllerRMenu = new MenuController(serviceMenu);
+    const controllerProduct = new ProductController(serviceProduct);
+
     const controllerResto = new RestaurantController(serviceResto);
 
-    const serviceMenu = new MenuService(mongoConnection);
-    const controllerRMenu = new MenuController(serviceMenu);
-
-    app.use("/resto", controllerResto.buildRouter());
+    /* Routes */
+    app.use("/product", controllerProduct.buildRouter());
     app.use("/menu", controllerRMenu.buildRouter());
+    app.use("/resto", controllerResto.buildRouter());
 
     const port = process.env.PORT || 3000;
     app.listen(port, () => console.log(`2. Application lancée sur le port ${port}`));

@@ -1,5 +1,6 @@
 import { MenuService } from "../services/Menu.service";
 import { Mongoose } from "mongoose";
+import { Restaurant } from '../models';
 
 export async function createMenu(connection: Mongoose) {
   const menuService = new MenuService(connection);

@@ -1,11 +1,14 @@
 import { config } from "dotenv";
 config();
 
+import { Restaurant } from "../models";
+
 import { getConnection, openConnection } from "../utils/mongoose.utils";
 import { UserService } from "../services/User.service";
 import { createUsers } from "./Users.dataset";
 import { createRestaurants } from "./Restaurants.dataset";
 import { createMenu } from "./Menu.dataset";
+import { createProduct } from "./Product.dataset";
 
 async function createDataset() {
   await openConnection();
@@ -13,14 +16,19 @@ async function createDataset() {
 
   const userService = new UserService(connection);
   const isEmpty = await userService.isEmpty();
+
   if (!isEmpty) {
-    console.log("Le dataset a déjà été créé.");
-    process.exit(0);
+    await connection.connection.dropDatabase();
+    console.log('0 : base de donnée réinitialisée');
   }
 
-  await createRestaurants(connection);
+  /* Launching all datasets */
+
+  let restaurants : Restaurant[]  = await createRestaurants(connection);
+  
   await createUsers(connection);
   await createMenu(connection);
+  await createProduct(connection);
 
   console.log("Dataset généré. ");
   process.exit(0);
